@@ -2,16 +2,19 @@ import pygame
 from pathlib import Path
 from player import Player
 from bullet import Bullet
+from enemy import Enemy
 
 
 class Game:
     def __init__(self, window):
         self.window = window
         self.running = True
+        self.score = 0
         self.bg = pygame.image.load(str(Path('./assets/bg.jpg')))
         self.font = pygame.font.SysFont('Hack', 14, True)
         self.player = Player(self.window)
         self.bullet = Bullet(self.window, self.player)
+        self.enemy = Enemy(self.window)
 
     def run(self):
         for event in pygame.event.get():
@@ -39,15 +42,37 @@ class Game:
             if event.type is pygame.KEYUP:
                 self.player.toggleMoving(False)
 
+        # Moves Player When Key Pressed
         if self.player.moving:
             self.player.move()
+
+        # Moves Bullet When Space Pressed
         if self.bullet.bullet_state is 'shoot':
             self.bullet.shoot()
         else:
             self.bullet.draw()
+
+        # Draws Enemy
+        self.enemy.move()
+        self.enemy.draw()
+
+        # Checks Bullet-Enemy Collide
+        if self.bullet.checkCollide(self.enemy):
+            self.enemy.randomizePosition()
+            self.score += 1
+
+        # Draws Player
         self.player.draw()
+
+        # Draw Score
+        self.window.blit(self.update_score(), (5, 20))
 
     def update_pos(self):
         pos = f'X: {self.player.playerX} Y: {self.player.playerY}'
         pos_text = self.font.render(pos, 1, pygame.Color("white"))
         return pos_text
+
+    def update_score(self):
+        score = f'Score: {self.score}'
+        score_text = self.font.render(score, 1, pygame.Color("white"))
+        return score_text

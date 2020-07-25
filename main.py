@@ -35,13 +35,16 @@ game = Game(window)
 
 # Main Loop
 while game.running:
+    # Limit FPS
     clock.tick(FPS)
 
+    # Draw Background
     window.fill(pygame.Color('black'))
     window.blit(game.bg, (0, 0))
     window.blit(update_fps(), (5, 0))
     window.blit(game.update_pos(), (WIDTH - 140, 0))
 
+    # Main Game
     game.run()
 
     pygame.display.update()

@@ -17,6 +17,7 @@ class Player:
     def draw(self):
         self.window.blit(self.image, (self.playerX, self.playerY))
 
+    # Changes Direction of Player
     def moveLeft(self):
         self.playerX_change = -self.speed
 
@@ -29,12 +30,14 @@ class Player:
     def moveDown(self):
         self.playerY_change = self.speed
 
+    # Changes Player Position
     def move(self):
         if self.playerX + self.playerX_change >= 0 and self.playerX + self.player_width + self.playerX_change <= self.window_width:
             self.playerX += self.playerX_change
         if self.playerY + self.playerY_change >= 0 and self.playerY + self.player_height + self.playerY_change <= self.window_height:
             self.playerY += self.playerY_change
 
+    # Stops Player When KeyUp
     def toggleMoving(self, isMoving):
         self.moving = isMoving
         self.playerX_change, self.playerY_change = 0, 0
