@@ -10,7 +10,7 @@ class Player:
         self.window = window
         self.window_width, self.window_height = window.get_size()
         self.playerX = (self.window_width/2) - (self.player_width/2)
-        self.playerY = (self.window_height/2) - (self.player_height/2)
+        self.playerY = (self.window_height * 0.8) - (self.player_height/2)
         self.playerX_change, self.playerY_change = 0, 0
         self.moving = False
 
