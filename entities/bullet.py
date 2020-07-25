@@ -23,7 +23,7 @@ class Bullet:
 
     # Moves Bullet When Shot
     def shoot(self):
-        if self.bullet_state is 'shoot':
+        if self.bullet_state == 'shoot':
             if self.bulletY + self.speed > 0:
                 self.bulletY -= self.speed
             else:

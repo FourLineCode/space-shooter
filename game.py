@@ -1,8 +1,8 @@
 import pygame
 from pathlib import Path
-from player import Player
-from bullet import Bullet
-from enemy import Enemy
+from entities.player import Player
+from entities.bullet import Bullet
+from entities.enemy import Enemy
 
 
 class Game:
@@ -36,7 +36,7 @@ class Game:
                     self.player.toggleMoving(True)
                     self.player.moveDown()
                 if event.key is pygame.K_SPACE:
-                    if self.bullet.bullet_state is 'ready':
+                    if self.bullet.bullet_state == 'ready':
                         self.bullet.setShootingPos(self.player.playerX)
                         self.bullet.bullet_state = 'shoot'
             if event.type is pygame.KEYUP:
@@ -47,7 +47,7 @@ class Game:
             self.player.move()
 
         # Moves Bullet When Space Pressed
-        if self.bullet.bullet_state is 'shoot':
+        if self.bullet.bullet_state == 'shoot':
             self.bullet.shoot()
         else:
             self.bullet.draw()
