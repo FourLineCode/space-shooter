@@ -34,6 +34,7 @@ class Bullet:
     def setShootingPos(self, pos):
         self.bulletX = pos + (self.bullet_width/2)
 
+    # Check Bullet Collision With Enemy
     def checkCollide(self, enemy):
         distance = math.sqrt(
             math.pow((self.bulletX+(self.bullet_width/2))-(enemy.enemyX+(enemy.enemy_width/2)), 2) + math.pow(self.bulletY-(enemy.enemyY+(enemy.enemy_height/2)), 2))
