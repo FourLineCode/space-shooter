@@ -39,7 +39,6 @@ class Bullet:
             self.move()
 
     # Locks Bullet X Position When Shot
-
     def setShootingPos(self, pos):
         self.bulletX = pos + (self.bullet_width/2)
 
