@@ -42,15 +42,15 @@ class Game:
             if event.type is pygame.KEYUP:
                 self.player.toggleMoving(False)
 
+        self.draw_window()
+
+    def draw_window(self):
         # Moves Player When Key Pressed
         if self.player.moving:
             self.player.move()
 
-        # Moves Bullet When Space Pressed
-        if self.bullet.bullet_state == 'shoot':
-            self.bullet.shoot()
-        else:
-            self.bullet.draw()
+        # Draws Bullet On State
+        self.bullet.draw()
 
         # Draws Enemy
         self.enemy.move()

@@ -6,7 +6,7 @@ from pathlib import Path
 class Enemy:
     def __init__(self, window):
         self.window = window
-        self.speed = 1
+        self.speed = 2
         self.image1 = pygame.image.load(str(Path('./assets/monster1.png')))
         # self.image2 = pygame.image.load(str(Path('./assets/monster2.png')))
         self.enemy_width, self.enemy_height = self.image1.get_size()
