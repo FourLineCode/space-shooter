@@ -27,6 +27,7 @@ class Enemy:
         if self.enemyY + self.enemy_height > self.window_height:
             self.randomizePosition()
 
+    # Checks If Enemy Reached End Of Screen
     def isGameOver(self):
         if self.enemyY + self.enemy_height >= self.window_height:
             return True
